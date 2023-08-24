@@ -13,15 +13,16 @@ static const int showbar            = 1;        /* 0 means no bar */
 static const int topbar             = 1;        /* 0 means bottom bar */
 static const char *fonts[]          = { "monospace:size=10", "fontawesome:size=10" };
 static const char dmenufont[]       = "monospace:size=10";
-static const char col_gray1[]       = "#282828";
-static const char col_gray2[]       = "#504945";
-static const char col_gray3[]       = "#bdae93";
-static const char col_gray4[]       = "#ebdbb2";
-static const char col_green[]       = "#8ec07c";
+static const char normbgcolor[]     = "#2f383e";
+static const char normbordercolor[] = "#868d80";
+static const char normfgcolor[]     = "#d8caac";
+static const char selfgcolor[]      = "#2f383e";
+static const char selbgcolor[]      = "#a7c080";
+static const char selbordercolor[]  = "#a7c080";
 static const char *colors[][3]      = {
 	/*               fg         bg         border   */
-	[SchemeNorm] = { col_gray3, col_gray1, col_gray2 },
-	[SchemeSel]  = { col_gray4, col_gray2, col_green },
+	[SchemeNorm] = { normfgcolor, normbgcolor, normbordercolor },
+	[SchemeSel]  = { selfgcolor,  selbgcolor,  selbordercolor  },
 };
 
 /* tagging */
@@ -67,11 +68,21 @@ static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() 
 static const char *dmenucmd[] = { "rofi", "-show", "drun", "-show-icons", NULL };
 static const char *termcmd[]  = { "alacritty", NULL };
 
+#include <X11/XF86keysym.h>
+static const char *upvol[]      = { "/usr/bin/amixer",  "set", "Master", "5%+", NULL };
+static const char *downvol[]    = { "/usr/bin/amixer",  "set", "Master", "5%-", NULL };
+static const char *mutevol[]    = { "/usr/bin/amixer",  "set", "Master", "toggle", NULL };
+static const char *play[]	= { "/usr/bin/playerctl", "play-pause", "toggle", NULL };
+static const char *next[]	= { "/usr/bin/playerctl", "next", "toggle", NULL };
+static const char *previous[]	= { "/usr/bin/playerctl", "previous", "toggle", NULL };
+
 static const Key keys[] = {
 	/* modifier                     key        function        argument */
 	{ MODKEY,                       XK_r,      spawn,          {.v = dmenucmd } },
 	{ MODKEY|ShiftMask,             XK_Return, spawn,          {.v = termcmd } },
-	{ MODKEY,                       XK_b,      togglebar,      {0} },
+	{ MODKEY,                       XK_b,      spawn,	   SHCMD ("brave-browser")},
+	{ 0,                            0xff61,    spawn, 	   SHCMD ("flameshot gui")},
+	{ MODKEY,                       XK_e,      spawn,          SHCMD ("thunar")},
 	{ MODKEY,                       XK_j,      focusstack,     {.i = +1 } },
 	{ MODKEY,                       XK_k,      focusstack,     {.i = -1 } },
 	{ MODKEY,                       XK_i,      incnmaster,     {.i = +1 } },
@@ -106,6 +117,12 @@ static const Key keys[] = {
 	TAGKEYS(                        XK_8,                      7)
 	TAGKEYS(                        XK_9,                      8)
 	{ MODKEY|ShiftMask,             XK_q,      quit,           {0} },
+	{ 0,                       0x1008ff11, spawn, {.v = downvol } },
+	{ 0,                       0x1008ff12, spawn, {.v = mutevol } },
+	{ 0,                       0x1008ff13, spawn, {.v = upvol   } },
+	{ 0,                       0x1008ff14, spawn, {.v = play   } },
+	{ 0,                       0x1008ff17, spawn, {.v = next   } },
+	{ 0,                       0x1008ff16, spawn, {.v = previous   } },
 };
 
 /* button definitions */
