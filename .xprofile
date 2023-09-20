@@ -1,0 +1,8 @@
+#!/bin/sh
+solaar &
+slstatus &
+flameshot & 
+lxpolkit &
+feh --bg-scale /home/kamil/Pictures/astronaut-nordic-ultrawide.png &
+nextcloud &
+exec dwm
