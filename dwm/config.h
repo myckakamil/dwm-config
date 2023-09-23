@@ -79,7 +79,7 @@ static const Key keys[] = {
 	/* modifier                     key        function        argument */
 	{ MODKEY,                       XK_r,      spawn,          {.v = dmenucmd } },
 	{ MODKEY|ShiftMask,             XK_Return, spawn,          {.v = termcmd } },
-	{ MODKEY,                       XK_b,      spawn,	   SHCMD ("firefox-esr")},
+	{ MODKEY,                       XK_b,      spawn,	   SHCMD ("firefox")},
 	{ 0,                            0xff61,    spawn, 	   SHCMD ("flameshot gui")},
 	{ MODKEY,                       XK_e,      spawn,          SHCMD ("thunar")},
 	{ MODKEY,                       XK_j,      focusstack,     {.i = +1 } },
