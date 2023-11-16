@@ -1,8 +1,18 @@
 #!/bin/sh
 solaar &
+picom &
+nm-applet &
 slstatus &
 flameshot & 
 lxpolkit &
-feh --bg-scale /home/kamil/Pictures/astronaut-nordic-ultrawide.png &
+feh --bg-fill /home/kamil/Obrazy/forest.jpg &
 nextcloud &
+
+#Touchpad xinput settings
+#Tap to click
+xinput set-prop 13 'libinput Tapping Enabled' 1
+
+#Natural scrolling
+xinput set-prop 13 'libinput Natural Scrolling Enabled' 1
+
 exec dwm
