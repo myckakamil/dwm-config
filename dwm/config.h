@@ -14,25 +14,16 @@ static const int topbar             = 1;        /* 0 means bottom bar */
 static const char *fonts[]          = { "monospace:size=10" };
 static const char dmenufont[]       = "monospace:size=10";
 
-// Everforest
-static const char normbgcolor[]     = "#2f383e";
-static const char normbordercolor[] = "#868d80";
-static const char normfgcolor[]     = "#d8caac";
-static const char selfgcolor[]      = "#2f383e";
-static const char selbgcolor[]      = "#a7c080";
-static const char selbordercolor[]  = "#a7c080";
-
-// Gruvbox
-//static const char normbgcolor[]     = "#282828";
-//static const char normbordercolor[] = "#3c3836";
-//static const char normfgcolor[]     = "#ebdbb2";
-//static const char selfgcolor[]      = "#282828";
-//static const char selbgcolor[]      = "#fe8019";
-//static const char selbordercolor[]  = "#fe8019";
+static const char col_gray1[]       = "#2E3440";
+static const char col_gray2[]       = "#3B4252";
+static const char col_gray3[]       = "#D8DEE9";
+static const char col_gray4[]       = "#ECEFF4";
+static const char col_white[]	    = "#e5e9f0";
+static const char col_cyan[]        = "#434C5E";
 static const char *colors[][3]      = {
 	/*               fg         bg         border   */
-	[SchemeNorm] = { normfgcolor, normbgcolor, normbordercolor },
-	[SchemeSel]  = { selfgcolor,  selbgcolor,  selbordercolor  },
+	[SchemeNorm] = { col_gray3, col_gray1, col_gray2 },
+	[SchemeSel]  = { col_gray4, col_cyan,  col_white  },
 };
 
 /* tagging */
@@ -59,6 +50,8 @@ static const Layout layouts[] = {
 	{ "><>",      NULL },    /* no layout function means floating behavior */
 	{ "[M]",      monocle },
 	{ "[][]=",    tilewide },
+	{ "|M|",      centeredmaster },
+	{ ">M>",      centeredfloatingmaster },
 };
 
 /* key definitions */
@@ -104,7 +97,9 @@ static const Key keys[] = {
 	{ MODKEY,                       XK_t,      setlayout,      {.v = &layouts[0]} },
 	{ MODKEY,                       XK_f,      setlayout,      {.v = &layouts[1]} },
 	{ MODKEY,                       XK_m,      setlayout,      {.v = &layouts[2]} },
-	{ MODKEY,                       XK_w,      setlayout,      {.v = &layouts[3]} },
+	{ MODKEY|ShiftMask,             XK_t,      setlayout,      {.v = &layouts[3]} },
+	{ MODKEY,                       XK_y,      setlayout,      {.v = &layouts[4]} },
+	{ MODKEY,                       XK_u,      setlayout,      {.v = &layouts[5]} },
 	{ MODKEY,                       XK_space,  setlayout,      {0} },
 	{ MODKEY|ShiftMask,             XK_space,  togglefloating, {0} },
 	{ MODKEY,                       XK_0,      view,           {.ui = ~0 } },
