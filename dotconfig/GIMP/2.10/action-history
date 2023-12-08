@@ -1,0 +1,9 @@
+# GIMP action-history
+
+(history-item "edit-paste" 1)
+(history-item "layers-anchor" 0)
+(history-item "file-export-as" 1)
+(history-item "tools-scale" 0)
+(history-item "file-quit" 1)
+
+# end of action-history

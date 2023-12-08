@@ -1,11 +1,13 @@
 #!/bin/sh
-solaar &
+slstatus &
 picom &
 nm-applet &
-slstatus &
+pasystray &
+blueman-applet &
+solaar &
 flameshot & 
 lxpolkit &
-feh --bg-fill /home/kamil/Obrazy/forest.jpg &
+feh --bg-fill /home/kamil/Obrazy/disco-elysium-nord.png &
 nextcloud &
 
 #Touchpad xinput settings
