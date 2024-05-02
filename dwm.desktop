@@ -1,5 +1,5 @@
 [Desktop Entry]
-Name=DWM
-Exec=/home/kamil/.xprofile
+Name=Dynamic Window Manager
+Exec=/usr/local/bin/dwm
 Type=Application
 DesktopNames=DWM
