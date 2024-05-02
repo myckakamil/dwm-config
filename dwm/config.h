@@ -27,7 +27,7 @@ static const char *colors[][3]      = {
 };
 
 /* tagging */
-static const char *tags[] = { "1", "2", "3", "4", "5", "6", "7", "8", "9" };
+static const char *tags[] = { "", "", "", "", "", "" };
 
 static const Rule rules[] = {
 	/* xprop(1):
@@ -71,6 +71,7 @@ static const char *termcmd[]  = { "alacritty", NULL };
 
 // audio contols
 #include <X11/XF86keysym.h>
+#include "movestack.c"
 static const char *upvol[]      = { "/usr/bin/amixer",  "set", "Master", "5%+", NULL };
 static const char *downvol[]    = { "/usr/bin/amixer",  "set", "Master", "5%-", NULL };
 static const char *mutevol[]    = { "/usr/bin/amixer",  "set", "Master", "toggle", NULL };
@@ -91,6 +92,8 @@ static const Key keys[] = {
 	{ MODKEY,                       XK_d,      incnmaster,     {.i = -1 } },
 	{ MODKEY,                       XK_h,      setmfact,       {.f = -0.05} },
 	{ MODKEY,                       XK_l,      setmfact,       {.f = +0.05} },
+ 	{ MODKEY|ShiftMask,             XK_j,      movestack,      {.i = +1 } },
+ 	{ MODKEY|ShiftMask,             XK_k,      movestack,      {.i = -1 } },
 	{ MODKEY,                       XK_Return, zoom,           {0} },
 	{ MODKEY,                       XK_Tab,    view,           {0} },
 	{ MODKEY|ShiftMask,             XK_c,      killclient,     {0} },
@@ -114,9 +117,6 @@ static const Key keys[] = {
 	TAGKEYS(                        XK_4,                      3)
 	TAGKEYS(                        XK_5,                      4)
 	TAGKEYS(                        XK_6,                      5)
-	TAGKEYS(                        XK_7,                      6)
-	TAGKEYS(                        XK_8,                      7)
-	TAGKEYS(                        XK_9,                      8)
 	{ MODKEY|ShiftMask,             XK_q,      quit,           {0} },
 	{ 0,                       0x1008ff11, spawn, {.v = downvol } },
         { 0,                       0x1008ff12, spawn, {.v = mutevol } },

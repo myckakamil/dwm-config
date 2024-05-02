@@ -13,15 +13,17 @@ static const int showbar            = 1;        /* 0 means no bar */
 static const int topbar             = 1;        /* 0 means bottom bar */
 static const char *fonts[]          = { "monospace:size=10" };
 static const char dmenufont[]       = "monospace:size=10";
-static const char col_gray1[]       = "#222222";
-static const char col_gray2[]       = "#444444";
-static const char col_gray3[]       = "#bbbbbb";
-static const char col_gray4[]       = "#eeeeee";
-static const char col_cyan[]        = "#005577";
+
+static const char col_gray1[]       = "#2E3440";
+static const char col_gray2[]       = "#3B4252";
+static const char col_gray3[]       = "#D8DEE9";
+static const char col_gray4[]       = "#ECEFF4";
+static const char col_white[]	    = "#e5e9f0";
+static const char col_cyan[]        = "#434C5E";
 static const char *colors[][3]      = {
 	/*               fg         bg         border   */
 	[SchemeNorm] = { col_gray3, col_gray1, col_gray2 },
-	[SchemeSel]  = { col_gray4, col_cyan,  col_cyan  },
+	[SchemeSel]  = { col_gray4, col_cyan,  col_white  },
 };
 
 /* tagging */
@@ -48,6 +50,8 @@ static const Layout layouts[] = {
 	{ "><>",      NULL },    /* no layout function means floating behavior */
 	{ "[M]",      monocle },
 	{ "[][]=",    tilewide },
+	{ "|M|",      centeredmaster },
+	{ ">M>",      centeredfloatingmaster },
 };
 
 /* key definitions */
@@ -67,6 +71,7 @@ static const char *termcmd[]  = { "alacritty", NULL };
 
 // audio contols
 #include <X11/XF86keysym.h>
+#include "movestack.c"
 static const char *upvol[]      = { "/usr/bin/amixer",  "set", "Master", "5%+", NULL };
 static const char *downvol[]    = { "/usr/bin/amixer",  "set", "Master", "5%-", NULL };
 static const char *mutevol[]    = { "/usr/bin/amixer",  "set", "Master", "toggle", NULL };
@@ -87,13 +92,17 @@ static const Key keys[] = {
 	{ MODKEY,                       XK_d,      incnmaster,     {.i = -1 } },
 	{ MODKEY,                       XK_h,      setmfact,       {.f = -0.05} },
 	{ MODKEY,                       XK_l,      setmfact,       {.f = +0.05} },
+ 	{ MODKEY|ShiftMask,             XK_j,      movestack,      {.i = +1 } },
+ 	{ MODKEY|ShiftMask,             XK_k,      movestack,      {.i = -1 } },
 	{ MODKEY,                       XK_Return, zoom,           {0} },
 	{ MODKEY,                       XK_Tab,    view,           {0} },
 	{ MODKEY|ShiftMask,             XK_c,      killclient,     {0} },
 	{ MODKEY,                       XK_t,      setlayout,      {.v = &layouts[0]} },
 	{ MODKEY,                       XK_f,      setlayout,      {.v = &layouts[1]} },
 	{ MODKEY,                       XK_m,      setlayout,      {.v = &layouts[2]} },
-	{ MODKEY,                       XK_w,      setlayout,      {.v = &layouts[3]} },
+	{ MODKEY|ShiftMask,             XK_t,      setlayout,      {.v = &layouts[3]} },
+	{ MODKEY,                       XK_y,      setlayout,      {.v = &layouts[4]} },
+	{ MODKEY,                       XK_u,      setlayout,      {.v = &layouts[5]} },
 	{ MODKEY,                       XK_space,  setlayout,      {0} },
 	{ MODKEY|ShiftMask,             XK_space,  togglefloating, {0} },
 	{ MODKEY,                       XK_0,      view,           {.ui = ~0 } },
