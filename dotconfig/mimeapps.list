@@ -1,8 +1,0 @@
-[Added Associations]
-application/vnd.openxmlformats-officedocument.wordprocessingml.document=org.onlyoffice.desktopeditors.desktop;libreoffice-writer.desktop;
-image/png=feh.desktop;
-video/x-matroska=mpv.desktop;vlc.desktop;
-image/jpeg=feh.desktop;
-
-[Default Applications]
-x-scheme-handler/nxm=modorganizer2-nxm-handler.desktop
