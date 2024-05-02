@@ -1,4 +1,3 @@
 # My dotfiles
 
-### Current desktop
-![alt text](screenshots/2023-08-15_22-58.png)
+Still work in progress. Next thing I'll try to focus on will by automation
