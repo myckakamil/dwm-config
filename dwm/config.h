@@ -12,7 +12,6 @@ static const int showsystray        = 1;        /* 0 means no systray */
 static const int showbar            = 1;        /* 0 means no bar */
 static const int topbar             = 1;        /* 0 means bottom bar */
 static const char *fonts[]          = { "monospace:size=10" };
-//static const char dmenufont[]       = "monospace:size=10";
 
 static const char col_gray1[]       = "#2E3440";
 static const char col_gray2[]       = "#3B4252";
@@ -39,7 +38,7 @@ static const Rule rules[] = {
 };
 
 /* layout(s) */
-static const float mfact     	= 0.55; /* factor of master area size [0.05..0.95] */
+static const float mfact     	= 0.7; /* factor of master area size [0.05..0.95] */
 static const int nmaster     	= 1;    /* number of clients in master area */
 static const int resizehints 	= 0;    /* 1 means respect size hints in tiled resizals */
 static const int lockfullscreen = 1; /* 1 will force focus on the fullscreen window */
@@ -66,7 +65,7 @@ static const Layout layouts[] = {
 #define SHCMD(cmd) { .v = (const char*[]){ "/bin/sh", "-c", cmd, NULL } }
 
 /* commands */
-static const char *dmenucmd[] = { "rofi", "-show", "drun", "-show-icons", NULL };
+static const char *roficmd[] = { "rofi", "-show", "drun", "-show-icons", NULL };
 static const char *termcmd[]  = { "alacritty", NULL };
 
 // audio contols
@@ -81,7 +80,7 @@ static const char *previous[]   = { "/usr/bin/playerctl", "previous", "toggle", 
 
 static const Key keys[] = {
 	/* modifier                     key        	function        argument */
-	{ MODKEY,                       XK_r,      	spawn,          {.v = dmenucmd } },
+	{ MODKEY,                       XK_r,      	spawn,          {.v = roficmd } },
 	{ MODKEY|ShiftMask,             XK_Return, 	spawn,          {.v = termcmd } },
 	{ MODKEY,                       XK_b,      	spawn,          SHCMD ("firefox")},
 	{ 0,                            0xff61,    	spawn,          SHCMD ("flameshot gui")},
