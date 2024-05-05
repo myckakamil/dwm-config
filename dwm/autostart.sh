@@ -6,7 +6,8 @@ pasystray &
 blueman-applet &
 flameshot & 
 lxpolkit &
-feh --bg-fill --randomize /home/kamil/.config/wallpapers &
+feh --bg-fill --randomize /home/kamil/.config/wallpapers/nord &
+# feh --bg-fill --randomize /home/kamil/.config/wallpapers/gruvbox &
 nextcloud &
 
 #Touchpad xinput settings

@@ -13,6 +13,7 @@ static const int showbar            = 1;        /* 0 means no bar */
 static const int topbar             = 1;        /* 0 means bottom bar */
 static const char *fonts[]          = { "monospace:size=10" };
 
+// Nordic
 static const char col_gray1[]       = "#2E3440";
 static const char col_gray2[]       = "#3B4252";
 static const char col_gray3[]       = "#D8DEE9";
@@ -24,6 +25,18 @@ static const char *colors[][3]      = {
 	[SchemeNorm] = { col_gray3, col_gray1, col_gray2 },
 	[SchemeSel]  = { col_gray4, col_cyan,  col_white  },
 };
+
+// Gruvbox
+//static const char col_gray1[]       = "#282828";
+//static const char col_gray2[]       = "#504945";
+//static const char col_gray3[]       = "#bdae93";
+//static const char col_gray4[]       = "#ebdbb2";
+//static const char col_cyan[]        = "#fbf1c7";
+//static const char *colors[][3]      = {
+// 	/*               fg         bg         border   */
+// 	[SchemeNorm] = { col_gray3, col_gray1, col_gray1 },
+//	[SchemeSel]  = { col_gray4, col_gray2, col_cyan  },
+// };
 
 /* tagging */
 static const char *tags[] = { "", "", "", "", "", "","","", ""};
