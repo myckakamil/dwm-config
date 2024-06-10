@@ -71,6 +71,7 @@ static const char *termcmd[]  = { "alacritty", NULL };
 // audio contols
 #include <X11/XF86keysym.h>
 #include "movestack.c"
+
 static const char *upvol[]      = { "/usr/bin/amixer",  "set", "Master", "5%+", NULL };
 static const char *downvol[]    = { "/usr/bin/amixer",  "set", "Master", "5%-", NULL };
 static const char *mutevol[]    = { "/usr/bin/amixer",  "set", "Master", "toggle", NULL };
@@ -114,16 +115,17 @@ static const Key keys[] = {
 	{ MODKEY|ShiftMask,             XK_comma,  	tagmon,         {.i = -1 } },
 	{ MODKEY|ShiftMask,             XK_period, 	tagmon,         {.i = +1 } },
 	{ MODKEY|ShiftMask,             XK_q, 		quit,           {0} },
-	{ 0,                     		0x1008ff11, spawn, 			{.v = downvol } },
-	{ 0,                       		0x1008ff12, spawn, 			{.v = mutevol } },
-	{ 0,                       		0x1008ff12, spawn, 			{.v = mutevol } },
-        { 0,                                    0x1008ffb2, spawn,                      {.v = mutemic } },
-        { 0,                                    0x1008ff02, spawn,                      {.v = brighup} },
-        { 0,                                    0x1008ff03, spawn,                      {.v = brighdown} },
-	{ 0,                       		0x1008ff13, spawn, 			{.v = upvol   } },
-	{ 0,                       		0x1008ff14, spawn, 			{.v = play   } },
-	{ 0,                       		0x1008ff17, spawn, 			{.v = next   } },
-	{ 0,                       		0x1008ff16, spawn, 			{.v = previous   } },
+	{ 0,                     	0x1008ff11,     spawn, 		{.v = downvol } },
+	{ 0,                       	0x1008ff13,     spawn, 		{.v = upvol   } },
+	{ 0,                       	0x1008ff12,     spawn, 		{.v = mutevol } },
+	{ 0,                       	0x1008ff12,     spawn, 		{.v = mutevol } },
+        { 0,                            0x1008ffb2,     spawn,          {.v = mutemic } },
+        { Mod1Mask,                       XK_m,           spawn,          {.v = mutemic } },
+        { 0,                            0x1008ff02,     spawn,          {.v = brighup } },
+        { 0,                            0x1008ff03,     spawn,          {.v = brighdown} },
+	{ 0,                       	0x1008ff14,     spawn, 		{.v = play    } },
+	{ 0,                       	0x1008ff17,     spawn, 		{.v = next    } },
+	{ 0,                       	0x1008ff16,     spawn, 		{.v = previous} },
 	TAGKEYS(                        XK_1,                      	0)
 	TAGKEYS(                        XK_2,                      	1)
 	TAGKEYS(                        XK_3,                      	2)

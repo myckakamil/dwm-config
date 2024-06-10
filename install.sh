@@ -12,7 +12,7 @@ DISTRO=$(cat /etc/os-release | grep -w ID | cut -d= -f2 | sed 's/"//g')
 # if debian run this
 if [ $DISTRO == "debian" ]
 then
-    apt install make gcc libx11-dev libxft-dev libxinerama-dev xorg lightdm wget
+    apt install make gcc libx11-dev libxft-dev libxinerama-dev xorg wget lightdm
     # firefox instalation
     install -d -m 0755 /etc/apt/keyrings
     wget -q https://packages.mozilla.org/apt/repo-signing-key.gpg -O- | tee /etc/apt/keyrings/packages.mozilla.org.asc > /dev/null
@@ -30,6 +30,7 @@ then
     exit
 fi
 
+# Doesn't work
 FOLDER=$(pwd)
 ln -s $FOLDER/dwm $HOME/.dwm
 ln -s $FOLDER/slstatus $HOME/.slstatus
