@@ -1,6 +1,7 @@
 #!/bin/sh
 slstatus &
 picom &
+compton &
 nm-applet &
 pasystray &
 blueman-applet &

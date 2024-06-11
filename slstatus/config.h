@@ -68,11 +68,16 @@ static const char vol[]         = "[ `amixer sget Master | tail -n 1 | awk '{pri
                                    && printf \"`amixer sget Master | tail -n 1 | awk '{print $5;}' | grep -Po '\\[\\K[^%]*'`%%\" \
                                    || printf 'Off'";
 
+static const char mic[] = "printf \"`amixer sget Capture | tail -n 1 | awk '{print $6}' | tr -d '[]' `\"";
+
+
+
 static const struct arg args[] = {
 	/* function format          argument */
 	{ cpu_perc,             "[CPU %s%%] ",      NULL },
         { ram_used,             "[RAM %s] ",        NULL },
-	//{ battery_perc,		"[BAT %s%%] ",	    "BAT0" },
+	{ battery_perc,		"[BAT %s%%] ",	    "BAT0" },
         { run_command,          "[VOL %s] ",        vol },
-	{ datetime, 		"[%s",               "%F %T]" },
+        { run_command,          "[MIC %s] ",        mic },
+	{ datetime, 		"[%s",              "%F %T]" },
 };
