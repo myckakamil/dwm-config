@@ -76,8 +76,9 @@ static const struct arg args[] = {
 	/* function format          argument */
 	{ cpu_perc,             "[CPU %s%%] ",      NULL },
         { ram_used,             "[RAM %s] ",        NULL },
-	{ battery_perc,		"[BAT %s%%] ",	    "BAT0" },
-        { run_command,          "[VOL %s] ",        vol },
-        { run_command,          "[MIC %s] ",        mic },
+	{ battery_perc,		"[Bat %s%%] ",	    "BAT0" },
+     	{ run_command,          "[Upd %s] ",        "aptitude search '~U' | wc -l" },
+        { run_command,          "[Vol %s] ",        vol },
+        { run_command,          "[Mic %s] ",        mic },
 	{ datetime, 		"[%s",              "%F %T]" },
 };

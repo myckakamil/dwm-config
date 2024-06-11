@@ -81,6 +81,7 @@ static const char *brighdown[]  = { "/usr/bin/brightnessctl", "set", "10%-", NUL
 static const char *play[]       = { "/usr/bin/playerctl", "play-pause", "toggle", NULL };
 static const char *next[]       = { "/usr/bin/playerctl", "next", "toggle", NULL };
 static const char *previous[]   = { "/usr/bin/playerctl", "previous", "toggle", NULL };
+static const char *display[]    = { "/home/kamil/Git/dwm-config/display.sh", NULL};
 
 static const Key keys[] = {
 	/* modifier                     key        	function        argument */
@@ -88,8 +89,8 @@ static const Key keys[] = {
 	{ MODKEY|ShiftMask,             XK_Return, 	spawn,          {.v = termcmd } },
 	{ MODKEY,                       XK_b,      	spawn,          SHCMD ("firefox")},
 	{ 0,                            0xff61,    	spawn,          SHCMD ("flameshot gui")},
-        { MODKEY,                       XK_e,      	spawn,          SHCMD ("thunar")},
-        { 0,                            0x1008ff59,     spawn,          SHCMD ("arandr")},
+    { MODKEY,                       XK_e,      	spawn,          SHCMD ("thunar")},
+    { 0,                            0x1008ff59, spawn,          SHCMD ("arandr")},
 	{ MODKEY,                       XK_j,      	focusstack,     {.i = +1 } },
 	{ MODKEY,                       XK_k,      	focusstack,     {.i = -1 } },
 	{ MODKEY,                       XK_i,      	incnmaster,     {.i = +1 } },
@@ -116,17 +117,18 @@ static const Key keys[] = {
 	{ MODKEY|ShiftMask,             XK_comma,  	tagmon,         {.i = -1 } },
 	{ MODKEY|ShiftMask,             XK_period, 	tagmon,         {.i = +1 } },
 	{ MODKEY|ShiftMask,             XK_q, 		quit,           {0} },
-	{ 0,                     	0x1008ff11,     spawn, 		{.v = downvol } },
-	{ 0,                       	0x1008ff13,     spawn, 		{.v = upvol   } },
-	{ 0,                       	0x1008ff12,     spawn, 		{.v = mutevol } },
-	{ 0,                       	0x1008ff12,     spawn, 		{.v = mutevol } },
-        { 0,                            0x1008ffb2,     spawn,          {.v = mutemic } },
-        { Mod1Mask,                     XK_m,           spawn,          {.v = mutemic } },
-        { 0,                            0x1008ff02,     spawn,          {.v = brighup } },
-        { 0,                            0x1008ff03,     spawn,          {.v = brighdown} },
-	{ 0,                       	0x1008ff14,     spawn, 		{.v = play    } },
-	{ 0,                       	0x1008ff17,     spawn, 		{.v = next    } },
-	{ 0,                       	0x1008ff16,     spawn, 		{.v = previous} },
+	{ MODKEY,                       XK_q, 		spawn,          {.v = display } },
+	{ 0,                     		0x1008ff11, spawn, 			{.v = downvol } },
+	{ 0,                       		0x1008ff13, spawn, 			{.v = upvol   } },
+	{ 0,                       		0x1008ff12, spawn, 			{.v = mutevol } },
+	{ 0,                       		0x1008ff12, spawn, 			{.v = mutevol } },
+    { 0,                            0x1008ffb2, spawn,          {.v = mutemic } },
+    { Mod1Mask,                     XK_m,       spawn,          {.v = mutemic } },
+    { 0,                            0x1008ff02, spawn,          {.v = brighup } },
+    { 0,                            0x1008ff03, spawn,          {.v = brighdown} },
+	{ 0,                       		0x1008ff14, spawn, 			{.v = play    } },
+	{ 0,                       		0x1008ff17, spawn, 			{.v = next    } },
+	{ 0,                       		0x1008ff16, spawn, 			{.v = previous} },
 	TAGKEYS(                        XK_1,                      	0)
 	TAGKEYS(                        XK_2,                      	1)
 	TAGKEYS(                        XK_3,                      	2)

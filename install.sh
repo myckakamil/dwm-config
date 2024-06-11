@@ -30,13 +30,14 @@ then
     exit
 fi
 
-# Doesn't work
 FOLDER=$(pwd)
 ln -s $FOLDER/dwm $HOME/.dwm
 ln -s $FOLDER/slstatus $HOME/.slstatus
+ln -s $FOLDER/.Xresources $HOME/.Xresources
 
-make -C $FOLDER/dwm
-make -C $FOLDER/slstatus
+# Doesn't work
+# make -C $FOLDER/dwm
+# make -C $FOLDER/slstatus
 
 cp dwm.desktop /usr/share/xsessions/
 
