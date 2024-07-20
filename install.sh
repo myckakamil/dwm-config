@@ -12,7 +12,8 @@ DISTRO=$(cat /etc/os-release | grep -w ID | cut -d= -f2 | sed 's/"//g')
 # if debian run this
 if [ $DISTRO == "debian" ]
 then
-    apt install make gcc libx11-dev libxft-dev libxinerama-dev xorg wget lightdm
+    apt install make gcc libx11-dev libxft-dev libxinerama-dev xorg wget lightdm thunar rofi alacritty feh bash-completion dunst flameshot playerctl
+
     # firefox instalation
     install -d -m 0755 /etc/apt/keyrings
     wget -q https://packages.mozilla.org/apt/repo-signing-key.gpg -O- | tee /etc/apt/keyrings/packages.mozilla.org.asc > /dev/null
@@ -23,6 +24,14 @@ then
     Pin-Priority: 1000
     ' | tee /etc/apt/preferences.d/mozilla 
     apt-get update &&  apt-get install firefox
+
+    # Pulseaudio instalation
+    apt install pulseaudio pulseaudio-utils pulseaudio-module-bluetooth pavucontrol
+    systemctl --user restart pulseaudio.service
+
+    # Bluetooth instalation
+    apt install blueman bluez bluez-tools pulseaudio-module-bluetooth
+    systemctl enable bluetooth.service
 fi
 if [ $DISTRO != "debian" ]
 then
