@@ -2,14 +2,13 @@
 
 # Autostart aplikacji
 slstatus &
-picom &
-compton &
+picom --animations -b &
 nm-applet &
 pasystray &
 blueman-applet &
 flameshot & 
 lxpolkit &
-feh --bg-fill /home/kamil/.config/wallpapers/disco-elysium.webp &
+feh --bg-fill /home/kamil/.config/wallpapers/mountains.png &
 nextcloud &
 
 # Konfiguracja monitorów
